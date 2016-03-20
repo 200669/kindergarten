@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if logged_in? %>
+    <h3>Jesteś zalogowany jako <%= current_user.name %>. <%= link_to "Wyloguj się", logout_path, method: "delete" %></h3>
+  <% else %>
+    <h3>Nie jesteś zalogowany. <%= link_to "Zaloguj się", login_path %></h3>
+  <% end %>
+
+  <% flash.each do |message_type, message| %>
+    <div style="color: red;"><%= message %></div>
+  <% end %>
 
 <%= yield %>
 
