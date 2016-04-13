@@ -1,57 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <% provide(:title, "O projekcie") %>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+<% provide(:title, "O projekcie") %>
 
-<div class="container">
-      <div class="page-header">
-        <h1>O projekcie</h1>
-      </div>
+<div class="page-header">
+  <h1>O projekcie</h1>
+</div>
 <p>Aplikacja tworzona jest na potrzeby projektu kursu Zastosowanie informatyki w gospodarce. Aplikacja pozwalać ma na zarządzanie działalnością przedszkola, a w szczególności ma ułatwić proces rozliczania finansowego.</p>
 
 <!-- Nasz zespół -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2 class="page-header">Autorzy: </h2>
-            </div>
-</div>
 <div class="row">
-            <div class="col-md-4">
-                <%= image_tag "head.jpg" %>
-                <h3>Miłosz Kachniarz
-                    <small>Rola</small>
-                </h3>
-                <p>Krótki opis</p>
-            </div>
-            <div class="col-md-4">
-                <%= image_tag "head.jpg" %>
-                <h3>Adrian Kordos
-                    <small>Rola</small>
-                </h3>
-                <p>Krótki opis</p>
-            </div>
-            <div class="col-md-4">
-                <%= image_tag "head.jpg" %>
-                <h3>Jakub Wężykowski
-                    <small>Rola</small>
-                </h3>
-                <p>Krótki opis</p>
-            </div>
-        </div>  
+  <div class="col-md-4">
+    <h2 class="page-header">Autorzy: </h2>
+  </div>
+</div>
 
+<div class="row">
+  <div class="col-md-4">
+      <%= image_tag "head.jpg" %>
+      <h3>Miłosz Kachniarz
+          <small>Rola</small>
+      </h3>
+      <p>Krótki opis</p>
+  </div>
+  <div class="col-md-4">
+      <%= image_tag "head.jpg" %>
+      <h3>Adrian Kordos
+          <small>Rola</small>
+      </h3>
+      <p>Krótki opis</p>
+  </div>
+  <div class="col-md-4">
+      <%= image_tag "head.jpg" %>
+      <h3>Jakub Wężykowski
+          <small>Rola</small>
+      </h3>
+      <p>Krótki opis</p>
+  </div>
+</div>
 
 <nav>
-            <ul class="pager">
-              <li><%= link_to "Powrót na stronę główną", root_path %></li>
-            </ul>
-          </nav>
-
-</div>
-
-
-    </body>
-</html>
+  <ul class="pager">
+    <li><%= link_to "Powrót na stronę główną", root_path %></li>
+  </ul>
+</nav>

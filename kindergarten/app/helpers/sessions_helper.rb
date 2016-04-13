@@ -14,6 +14,12 @@ module SessionsHelper
     !current_user.nil?
   end
   
+  # Returns true if the logged user is an admin
+  # FIXME: Make it a user field, not some hardcoded magic
+  def admin?
+    current_user.login == "admin"
+  end
+  
   # Logs out the current user.
   def log_out
     session.delete(:user_id)
