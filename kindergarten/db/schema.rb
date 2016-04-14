@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160320215555) do
+ActiveRecord::Schema.define(version: 20160414203512) do
+
+  create_table "children", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.string   "lastname",   limit: 255, null: false
+    t.date     "birthdate",              null: false
+    t.string   "pesel",      limit: 11,  null: false
+    t.string   "barcode",    limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "login",           limit: 255

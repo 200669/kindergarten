@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :children
   root 'static_pages#index'
   get 'about' => 'static_pages#about'
   get 'login' => 'sessions#new'
