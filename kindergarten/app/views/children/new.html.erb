@@ -2,8 +2,4 @@
 
 <%= render 'form' %>
 
-<nav>
-    <ul class="pager">
-        <li><%= link_to 'Back', children_path, class: "btn btn-secondary" %><li>
-    </ul>
-</nav>
+<%= button_to "Back", children_path, :method => "get", class: "button" %>
