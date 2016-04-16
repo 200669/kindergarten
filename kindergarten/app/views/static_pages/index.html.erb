@@ -4,4 +4,6 @@
 <p>Witaj na stronie głównej aplikacji tworzonej na potrzeby projektu ZIwG!</p>
 <p>Wkrótce pojawi się tu więcej treści. Tymczasem możesz zajrzeć na <%= link_to "stronę z informacjami o projekcie", about_path %>.</p>
 
-<p>Jeśli chcesz zarejestrować dziecko to <%= link_to "przejdź do formularza", children_path %></p>
+<% if logged_in? %>
+  <p>Jeśli chcesz zarejestrować dziecko to <%= link_to "przejdź do formularza", new_child_path %></p>
+<% end %>

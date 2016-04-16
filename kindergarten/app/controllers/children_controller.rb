@@ -1,4 +1,5 @@
 class ChildrenController < ApplicationController
+  before_action :check_logged_in
   before_action :set_child, only: [:show, :edit, :update, :destroy]
 
   # GET /children
@@ -70,5 +71,9 @@ class ChildrenController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
       params.require(:child).permit(:name, :lastname, :birthdate, :pesel, :barcode)
+    end
+
+    def check_logged_in
+      redirect_to root_url unless logged_in?
     end
 end
