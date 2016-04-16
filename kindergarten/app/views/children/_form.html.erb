@@ -1,37 +1,29 @@
-<%= form_for(@child) do |f| %>
-  <% if @child.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@child.errors.count, "error") %> prohibited this child from being saved:</h2>
-
-      <ul>
-      <% @child.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= form_for(@child) do |f| %>
+      <div class="form-group">
+        <%= f.label :name, "Imię" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :lastname, "Nazwisko" %><br>
+        <%= f.text_field :lastname, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :birthdate, "Data urodzenia" %><br>
+        <%= f.date_select :birthdate, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :pesel, "PESEL" %><br>
+        <%= f.text_field :pesel, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :barcode, "Kod kreskowy" %><br>
+        <%= f.text_field :barcode, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit "Wyślij", class: "btn btn-primary" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :birthdate %><br>
-    <%= f.date_select :birthdate %>
-  </div>
-  <div class="field">
-    <%= f.label :pesel %><br>
-    <%= f.text_field :pesel %>
-  </div>
-  <div class="field">
-    <%= f.label :barcode %><br>
-    <%= f.text_field :barcode %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

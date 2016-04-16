@@ -7,6 +7,13 @@
           <% if admin? %>
             <li><%= link_to "Dodaj konto", "#" %></li>
           <% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Dzieci <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Dodaj nowe", new_child_path %></li>
+              <li><%= link_to "Lista dzieci", children_path %></li>
+            </ul>
+          </li>
           <li><%= link_to "Wyloguj się (" + current_user.name + ")", logout_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "Zaloguj się", login_path %></li>

@@ -1,29 +1,33 @@
-<!--<p id="notice"><%= notice %></p>-->
+<div class="page-header">
+  <h1>Szczegóły</h1>
+</div>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Imię:</strong>
   <%= @child.name %>
 </p>
 
 <p>
-  <strong>Lastname:</strong>
+  <strong>Nazwisko:</strong>
   <%= @child.lastname %>
 </p>
 
 <p>
-  <strong>Birthdate:</strong>
+  <strong>Data urodzenia:</strong>
   <%= @child.birthdate %>
 </p>
 
 <p>
-  <strong>Pesel:</strong>
+  <strong>PESEL:</strong>
   <%= @child.pesel %>
 </p>
 
 <p>
-  <strong>Barcode:</strong>
+  <strong>Kod kreskowy:</strong>
   <%= @child.barcode %>
 </p>
 
-<%= link_to 'Edit', edit_child_path(@child) %> |
-<%= link_to 'Back', children_path %>
+<ul class="pager">
+  <li><%= link_to "Edycja", edit_child_path(@child) %></li>
+  <li><%= link_to "Powrót do listy", children_path %></li>
+</ul>

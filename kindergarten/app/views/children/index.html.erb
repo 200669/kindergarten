@@ -1,15 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Children</h1>
+<div class="page-header">
+  <h1>Lista dzieci</h1>
+</div>
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Lastname</th>
-      <th>Birthdate</th>
-      <th>Pesel</th>
-      <th>Barcode</th>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th>Data urodzenia</th>
+      <th>PESEL</th>
+      <th>Kod kreskowy</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,15 +22,15 @@
         <td><%= child.birthdate %></td>
         <td><%= child.pesel %></td>
         <td><%= child.barcode %></td>
-        <td><%= link_to 'Show', child %></td>
-        <td><%= link_to 'Edit', edit_child_path(child) %></td>
-        <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż szczegóły', child %></td>
+        <td><%= link_to 'Edytuj', edit_child_path(child) %></td>
+        <td><%= link_to 'Usuń', child, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= button_to 'New Child', new_child_path, :method => "get", class: "button" %>
-<%= button_to 'Powrót', root_path, :method => "get", class: "button" %>
+<ul class="pager">
+  <li><%= link_to "Dodaj dziecko", new_child_path %></li>
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>

@@ -1,5 +1,10 @@
-<h1>New Child</h1>
+<div class="page-header">
+  <h1>Nowe dziecko</h1>
+</div>
 
 <%= render 'form' %>
 
-<%= button_to "Back", children_path, :method => "get", class: "button" %>
+<ul class="pager">
+  <li><%= link_to "Powrót do listy", children_path %></li>
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>

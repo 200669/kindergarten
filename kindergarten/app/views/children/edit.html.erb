@@ -1,6 +1,10 @@
-<h1>Editing Child</h1>
+<div class="page-header">
+  <h1>Edycja danych dziecka</h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @child %> |
-<%= link_to 'Back', children_path %>
+<ul class="pager">
+  <li><%= link_to "Pokaż dziecko", @child %></li>
+  <li><%= link_to "Powrót do listy", children_path %></li>
+</ul>
