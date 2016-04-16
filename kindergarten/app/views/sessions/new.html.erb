@@ -18,8 +18,12 @@
         <%= f.password_field :password, class: 'form-control' %>
       </div>
       
-      <%= f.submit "Zaloguj", class: "btn btn-primary" %>
-    <% end %>
+      <nav>
+        <ul class="pager">
+          <%= f.submit "Zaloguj", class: "btn btn-primary" %>
+        </ul>
+      </nav>
 
+    <% end %>
   </div>
 </div>
