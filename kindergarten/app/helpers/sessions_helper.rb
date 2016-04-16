@@ -17,7 +17,7 @@ module SessionsHelper
   # Returns true if the logged user is an admin
   # FIXME: Make it a user field, not some hardcoded magic
   def admin?
-    current_user.login == "admin"
+    logged_in? && current_user.login == "admin"
   end
   
   # Logs out the current user.

@@ -29,7 +29,7 @@ class ChildrenController < ApplicationController
 
     respond_to do |format|
       if @child.save
-        format.html { redirect_to @child, notice: 'Dziecko zostało pomyślnie dodane' }
+        format.html { redirect_to @child, flash: { info: 'Dziecko zostało pomyślnie dodane' } }
         format.json { render :show, status: :created, location: @child }
       else
         format.html { render :new }
@@ -43,10 +43,10 @@ class ChildrenController < ApplicationController
   def update
     respond_to do |format|
       if @child.update(child_params)
-        format.html { redirect_to @child, notice: 'Pomyślnie zaktualizowano dane dziecka' }
+        format.html { redirect_to @child, flash: { info: 'Pomyślnie zaktualizowano dane dziecka' } }
         format.json { render :show, status: :ok, location: @child }
       else
-        format.html { render :edit }
+        format.html { render :edit, flash: { danger: @child.errors } }
         format.json { render json: @child.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +57,7 @@ class ChildrenController < ApplicationController
   def destroy
     @child.destroy
     respond_to do |format|
-      format.html { redirect_to children_url, notice: 'Dziecko pomyślnie usunięto z bazy' }
+      format.html { redirect_to children_url, flash: { info: 'Dziecko pomyślnie usunięto z bazy' } }
       format.json { head :no_content }
     end
   end
