@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>Szczegóły</h1>
+</div>
+
+<p>
+  <strong>Imię:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Nazwisko:</strong>
+  <%= @user.lastname %>
+</p>
+
+<p>
+  <strong>Login:</strong>
+  <%= @user.login %>
+</p>
+
+<ul class="pager">
+  <li><%= link_to "Edycja", edit_user_path(@user) %></li>
+  <li><%= link_to "Powrót do listy", users_path %></li>
+</ul>

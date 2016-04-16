@@ -1,0 +1,18 @@
+<% provide(:title, "Edytuj konto") %>
+
+<div class="page-header">
+  <h1>Edycja danych konta</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'errors' %>
+
+    <%= render 'form' %>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Pokaż dziecko", @user %></li>
+  <li><%= link_to "Powrót do listy", users_path %></li>
+</ul>
