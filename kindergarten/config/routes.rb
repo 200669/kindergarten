@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :children
   resources :users
+  post 'reset_password/:id' => 'users#reset_password', as: :reset_password
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
