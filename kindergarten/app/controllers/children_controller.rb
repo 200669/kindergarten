@@ -1,6 +1,6 @@
 class ChildrenController < ApplicationController
   before_action :check_logged_in
-  before_action :set_child, only: [:show, :edit, :update, :destroy]
+  before_action :set_child, only: [:show, :edit, :update, :destroy, :start_stay, :end_stay]
 
   # GET /children
   # GET /children.json
@@ -61,6 +61,37 @@ class ChildrenController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def start_stay
+    if not @child.stays.empty? and @child.stays.last.end.nil?
+      flash[:danger] = "Błąd! To nie powinno się zdarzyć :("
+      redirect_to stays_url
+    end
+    
+    @stay = Stay.new(child: @child, start: DateTime.now)
+    if @stay.save
+      flash[:info] = "Zarejestrowano początek pobytu dziecka."
+      redirect_to stays_url
+    else
+      redirect_to register_stays_url
+    end
+  end
+  
+  def end_stay
+    if @child.stays.empty? or not @child.stays.last.end.nil?
+      flash[:danger] = "Błąd! To nie powinno się zdarzyć :("
+      redirect_to stays_url
+    end
+    
+    @stay = @child.stays.last
+    @stay.end = DateTime.now
+    if @stay.save
+      flash[:info] = "Zarejestrowano koniec pobytu dziecka."
+      redirect_to stays_url
+    else
+      redirect_to register_stays_url
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,9 +102,5 @@ class ChildrenController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def child_params
       params.require(:child).permit(:name, :lastname, :birthdate, :pesel, :barcode)
-    end
-
-    def check_logged_in
-      redirect_to root_url unless logged_in?
     end
 end

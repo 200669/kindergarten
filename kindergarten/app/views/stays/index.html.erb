@@ -1,0 +1,35 @@
+<% provide(:title, "Lista obecności") %>
+
+<div class="page-header">
+  <h1>Lista obecności</h1>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Początek</th>
+      <th>Koniec</th>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stays.each do |stay| %>
+      <tr>
+        <td><%= stay.start %></td>
+        <td><%= stay.end %></td>
+        <td><%= stay.child.name %></td>
+        <td><%= stay.child.lastname %></td>
+        <td><%= link_to 'Edytuj', edit_stay_path(stay) %></td>
+        <td><%= link_to 'Usuń', stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<ul class="pager">
+  <li><%= link_to "Zarejestruj pobyt", register_stays_path %></li>
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>

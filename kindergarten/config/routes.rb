@@ -4,10 +4,21 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :children
-  resources :users
-  post 'reset_password/:id' => 'users#reset_password', as: :reset_password
-
+  resources :children do
+    member do
+      post 'start_stay'
+      post 'end_stay'
+    end
+  end
+  resources :users do
+    member do
+      post 'reset_password'
+    end
+  end
+  resources :stays do
+    get 'register', on: :collection
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

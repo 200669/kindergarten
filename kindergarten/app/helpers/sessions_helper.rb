@@ -25,4 +25,8 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+  
+  def check_logged_in
+    redirect_to root_url unless logged_in?
+  end
 end

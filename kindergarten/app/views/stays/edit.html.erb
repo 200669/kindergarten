@@ -1,0 +1,38 @@
+<% provide(:title, "Edytuj obecność") %>
+
+<div class="page-header">
+  <h1>Edycja obecności - <%= @stay.child.name %> <%= @stay.child.lastname %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if @stay.errors.any? %>
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@stay.errors.count, "error") %>.
+        <ul>
+          <% @stay.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for(@stay) do |f| %>
+      <div class="form-group">
+        <%= f.label :start, "Początek pobytu" %>
+        <%= f.datetime_select :start, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :end, "Koniec pobytu" %>
+        <%= f.datetime_select :end, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit "Wyślij", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Powrót do listy", stays_path %></li>
+</ul>

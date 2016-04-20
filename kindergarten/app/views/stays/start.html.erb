@@ -1,0 +1,49 @@
+<% provide(:title, "Dodaj konto") %>
+
+<div class="page-header">
+  <h1>Zarejestruj pobyt dziecka</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <input id="search_child" type="text" class="form-control" placeholder="Wyszukaj..." />
+  </div>
+</div>
+
+<table id="children" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Imię</th>
+      <th>Nazwisko</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @children.each do |child| %>
+      <tr>
+        <td><%= child.name %></td>
+        <td><%= child.lastname %></td>
+        <td><%= link_to 'Wybierz', '#' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<ul class="pager">
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>
+
+<script>
+  var $rows = $('#children tbody tr');
+  $('#search_child').keyup(function() {
+    var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+        reg = RegExp(val, 'i'),
+        text;
+    
+    $rows.show().filter(function() {
+      text = $(this).text().replace(/\s+/g, ' ');
+      return !reg.test(text);
+    }).hide();
+  });
+</script>

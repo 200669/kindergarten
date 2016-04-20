@@ -20,7 +20,7 @@
         <td><%= user.lastname %></td>
         <td><%= link_to 'Pokaż szczegóły', user %></td>
         <td><%= link_to 'Edytuj', edit_user_path(user) %></td>
-        <td><%= link_to 'Zresetuj hasło', reset_password_path(user), method: :post, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
+        <td><%= link_to 'Zresetuj hasło', reset_password_user_path(user), method: :post, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
         <td><%= link_to 'Usuń', user, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
       </tr>
     <% end %>
