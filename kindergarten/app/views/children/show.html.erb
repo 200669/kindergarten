@@ -1,31 +1,49 @@
 <div class="page-header">
-  <h1>Szczegóły</h1>
+  <h1><%= @child.name+' '+@child.lastname %></h1>
 </div>
 
-<p>
-  <strong>Imię:</strong>
-  <%= @child.name %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>ID:</strong>
+      <%= @child.barcode %>
+    </p>
+    
+    <p>
+      <strong>Data urodzenia:</strong>
+      <%= @child.birthdate %>
+    </p>
+    
+    <p>
+      <strong>PESEL:</strong>
+      <%= @child.pesel %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <h2>Lista obecności</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Początek pobytu</th>
+          <th>Koniec pobytu</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @child.stays.each do |stay| %>
+          <tr>
+            <td><%= stay.start %></td>
+            <td><%= stay.end %></td>
+            <td><%= link_to 'Edytuj', edit_stay_path(stay) %></td>
+            <td><%= link_to 'Usuń', stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<p>
-  <strong>Nazwisko:</strong>
-  <%= @child.lastname %>
-</p>
-
-<p>
-  <strong>Data urodzenia:</strong>
-  <%= @child.birthdate %>
-</p>
-
-<p>
-  <strong>PESEL:</strong>
-  <%= @child.pesel %>
-</p>
-
-<p>
-  <strong>Kod kreskowy:</strong>
-  <%= @child.barcode %>
-</p>
 
 <ul class="pager">
   <li><%= link_to "Edycja", edit_child_path(@child) %></li>

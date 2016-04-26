@@ -1,5 +1,10 @@
 <%= form_for(@child) do |f| %>
   <div class="form-group">
+    <%= f.label :barcode, "ID" %>
+    <%= f.text_field :barcode, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
     <%= f.label :name, "Imię" %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
@@ -8,17 +13,15 @@
     <%= f.label :lastname, "Nazwisko" %>
     <%= f.text_field :lastname, class: 'form-control' %>
   </div>
+  
   <div class="form-group">
     <%= f.label :birthdate, "Data urodzenia" %>
     <%= f.date_select :birthdate, class: 'form-control' %>
   </div>
+  
   <div class="form-group">
     <%= f.label :pesel, "PESEL" %>
     <%= f.text_field :pesel, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :barcode, "Kod kreskowy" %>
-    <%= f.text_field :barcode, class: 'form-control' %>
   </div>
   
   <%= f.submit "Wyślij", class: "btn btn-primary" %>
