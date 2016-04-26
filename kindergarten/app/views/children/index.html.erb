@@ -8,8 +8,7 @@
       <th>ID</th>
       <th>Imię</th>
       <th>Nazwisko</th>
-      <th>Data urodzenia</th>
-      <th>PESEL</th>
+      <th>Grupa</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,8 +19,7 @@
         <td><%= child.barcode %></td>
         <td><%= child.name %></td>
         <td><%= child.lastname %></td>
-        <td><%= child.birthdate %></td>
-        <td><%= child.pesel %></td>
+        <td><%= child.group.name if not child.group.nil? %></td>
         <td><%= link_to 'Pokaż szczegóły', child %></td>
         <td><%= link_to 'Edytuj', edit_child_path(child) %></td>
         <td><%= link_to 'Usuń', child, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>

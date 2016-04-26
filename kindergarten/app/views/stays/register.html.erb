@@ -15,6 +15,7 @@
     <tr>
       <th>Imię</th>
       <th>Nazwisko</th>
+      <th>Grupa</th>
       <th></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
       <tr>
         <td><%= child.name %></td>
         <td><%= child.lastname %></td>
+        <td><%= child.group.name if not child.group.nil? %></td>
         <% if not child.stays.empty? and child.stays.last.end.nil? %>
           <td><%= link_to 'Zakończ pobyt', end_stay_child_path(child), method: :post %></td>
         <% else %>

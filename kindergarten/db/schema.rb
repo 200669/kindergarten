@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419124047) do
+ActiveRecord::Schema.define(version: 20160426102311) do
 
   create_table "children", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20160419124047) do
     t.date     "birthdate",              null: false
     t.string   "pesel",      limit: 11,  null: false
     t.string   "barcode",    limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "group_id",   limit: 4
+  end
+
+  add_index "children", ["group_id"], name: "index_children_on_group_id", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -42,5 +51,6 @@ ActiveRecord::Schema.define(version: 20160419124047) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "children", "groups"
   add_foreign_key "stays", "children"
 end

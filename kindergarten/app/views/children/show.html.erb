@@ -10,6 +10,11 @@
     </p>
     
     <p>
+      <strong>Grupa:</strong>
+      <%= link_to @child.group.name, @child.group if not @child.group.nil? %>
+    </p>
+    
+    <p>
       <strong>Data urodzenia:</strong>
       <%= @child.birthdate %>
     </p>

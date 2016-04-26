@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1>Grupa <%= @group.name %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>Liczba dzieci:</strong>
+      <%= @group.children.size %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <h2>Lista dzieci</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Imię i nazwisko</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @group.children.each do |child| %>
+          <tr>
+            <td><%= child.barcode %></td>
+            <td><%= child.name+' '+child.lastname %></td>
+            <td><%= link_to 'Szczegóły', child %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Edycja", edit_group_path(@group) %></li>
+  <li><%= link_to "Powrót do listy", groups_path %></li>
+</ul>
