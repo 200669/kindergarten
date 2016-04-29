@@ -1,44 +1,60 @@
-<header class="navbar navbar-fixed-top navbar-default">
-  <div class="container">
-    <nav>
-      <ul class="nav navbar-nav">
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
         <li><%= link_to "Główna", root_path %></li>
         <% if logged_in? %>
           <% if admin? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Użytkownicy <span class="caret"></span></a>
-              <ul class="dropdown-menu">
+            <li data-toggle="collapse" data-target="#uzytkownicy" class="collapsed">
+                  <a href="#"> Użytkownicy <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="uzytkownicy">
                 <li><%= link_to "Dodaj nowe", new_user_path %></li>
                 <li><%= link_to "Lista kont", users_path %></li>
               </ul>
-            </li>
+
           <% end %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Dzieci <span class="caret"></span></a>
-            <ul class="dropdown-menu">
+          
+            
+              <li data-toggle="collapse" data-target="#dzieci" class="collapsed">
+                  <a href="#"> Dzieci <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="dzieci">
               <li><%= link_to "Dodaj nowe", new_child_path %></li>
               <li><%= link_to "Lista dzieci", children_path %></li>
-              <li class="divider"></li>
               <li><%= link_to "Grupy", groups_path %></li>
             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Obecności <span class="caret"></span></a>
-            <ul class="dropdown-menu">
+          
+          
+            <li data-toggle="collapse" data-target="#obecnosci" class="collapsed">
+                  <a href="#"> Obecności <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="obecnosci">
               <li><%= link_to "Zarejestruj", register_stays_path %></li>
               <li><%= link_to "Lista obecności", stays_path %></li>
             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Konto <span class="caret"></span></a>
-            <ul class="dropdown-menu">
+          
+          <li data-toggle="collapse" data-target="#konto" class="collapsed">
+                  <a href="#"> Konto <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="konto">
               <li><%= link_to "Wyloguj się", logout_path, method: "delete" %></li>
             </ul>
-          </li>
+          
         <% else %>
           <li><%= link_to "Zaloguj się", login_path %></li>
         <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+        
+        </li>
+            </ul>
+        </div>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span></a>
+        <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
