@@ -4,24 +4,24 @@
   <h1>Lista kont</h1>
 </div>
 
-<table class="table table-bordered">
+<table class="table">
   <thead>
     <tr>
-      <th>Imię</th>
-      <th>Nazwisko</th>
-      <th colspan="4"></th>
+      <th class="col-md-10">Imię i nazwisko</th>
+      <th class="col-md-2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.lastname %></td>
-        <td><%= link_to 'Pokaż szczegóły', user %></td>
-        <td><%= link_to 'Edytuj', edit_user_path(user) %></td>
-        <td><%= link_to 'Zresetuj hasło', reset_password_user_path(user), method: :post, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
-        <td><%= link_to 'Usuń', user, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
+        <td class="col-md-10"><%= user.name %> <%= user.lastname %>, :class => 'x-icon'</td>
+        <td class="col-md-2">
+          <%= link_to glyph(:search), user, :class => 'x-icon' %>
+          <%= link_to glyph(:pencil), edit_user_path(user), :class => 'x-icon' %>
+          <%= link_to glyph(:repeat), reset_password_user_path(user), method: :post, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
+          <%= link_to glyph(:trash), user, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

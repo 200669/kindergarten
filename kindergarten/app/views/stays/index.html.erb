@@ -4,27 +4,28 @@
   <h1>Lista obecności</h1>
 </div>
 
-<table class="table table-bordered">
+<table class="table">
   <thead>
     <tr>
-      <th>Początek</th>
-      <th>Koniec</th>
-      <th>Imię</th>
-      <th>Nazwisko</th>
-      <th colspan="2"></th>
+      <th class="col-md-3">Początek</th>
+      <th class="col-md-3">Koniec</th>
+      <th class="col-md-2">Imię</th>
+      <th class="col-md-3">Nazwisko</th>
+      <th class="col-md-1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @stays.each do |stay| %>
       <tr>
-        <td><%= stay.start %></td>
-        <td><%= stay.end %></td>
-        <td><%= stay.child.name %></td>
-        <td><%= stay.child.lastname %></td>
-        <td><%= link_to 'Edytuj', edit_stay_path(stay) %></td>
-        <td><%= link_to 'Usuń', stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
-      </tr>
+        <td class="col-md-3"><%= stay.start %></td>
+        <td class="col-md-3"><%= stay.end %></td>
+        <td class="col-md-2"><%= stay.child.name %></td>
+        <td class="col-md-3"><%= stay.child.lastname %></td>
+        <td class="col-md-1"><%= link_to glyph(:pencil), edit_stay_path(stay), :class => 'x-icon' %>
+          <%= link_to glyph(:trash), stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
+        </td>
+      </tr> 
     <% end %>
   </tbody>
 </table>

@@ -2,23 +2,24 @@
   <h1>Lista grup</h1>
 </div>
 
-<table class="table table-bordered">
+<table class="table">
   <thead>
     <tr>
-      <th>Nazwa grupy</th>
-      <th>Liczba dzieci</th>
-      <th colspan="3"></th>
+      <th class="col-md-4">Nazwa grupy</th>
+      <th class="col-md-6">Liczba dzieci</th>
+      <th class="col-md-2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= group.name %></td>
-        <td><%= group.children.size %></td>
-        <td><%= link_to 'Pokaż szczegóły', group %></td>
-        <td><%= link_to 'Edytuj', edit_group_path(group) %></td>
-        <td><%= link_to 'Usuń', group, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć. Dzieci należące do tej grupy nie zostaną usunięte.' } %></td>
+        <td class="col-md-4"><%= group.name %></td>
+        <td class="col-md-6"><%= group.children.size %></td>
+        <td class="col-md-2"><%= link_to glyph(:search), group, :class => 'x-icon' %>
+          <%= link_to glyph(:pencil), edit_group_path(group), :class => 'x-icon' %>
+          <%= link_to glyph(:trash), group, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć. Dzieci należące do tej grupy nie zostaną usunięte.' }, :class => 'x-icon' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
