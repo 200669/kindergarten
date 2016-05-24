@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Meal Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ordinal</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meal_types.each do |meal_type| %>
+      <tr>
+        <td><%= meal_type.ordinal %></td>
+        <td><%= meal_type.name %></td>
+        <td><%= meal_type.price %></td>
+        <td><%= link_to 'Show', meal_type %></td>
+        <td><%= link_to 'Edit', edit_meal_type_path(meal_type) %></td>
+        <td><%= link_to 'Destroy', meal_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meal type', new_meal_type_path %>
