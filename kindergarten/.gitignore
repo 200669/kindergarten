@@ -13,3 +13,5 @@
 /tmp
 /test
 /spring-1000
+config/database.yml
+config/database.yml.old
