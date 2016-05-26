@@ -20,7 +20,7 @@
         <td class="col-md-3"><%= child.group.name if not child.group.nil? %></td>
         <td class="col-md-2">
           <%= link_to glyph(:search), child, :class => 'x-icon' %>
-          <%= link_to glyph(:pencil), edit_child_path(child), :class => 'x-icon' %>
+          <%= link_to glyph(:pencil), edit_child_path(child), :class => 'x-icon-red' %>
           <%= link_to glyph(:trash), child, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
         </td>
       </tr>
