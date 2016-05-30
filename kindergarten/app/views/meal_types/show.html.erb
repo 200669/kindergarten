@@ -1,19 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<div class="page-header">
+  <h1>Posiłek </h1>
+</div>
+
+
 <p>
-  <strong>Ordinal:</strong>
+  <strong>Lp:</strong>
   <%= @meal_type.ordinal %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nazwa:</strong>
   <%= @meal_type.name %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong>Cena:</strong>
   <%= @meal_type.price %>
 </p>
 
-<%= link_to 'Edit', edit_meal_type_path(@meal_type) %> |
-<%= link_to 'Back', meal_types_path %>
+<ul class="pager">
+  <li><%= link_to 'Edycja', edit_meal_type_path(@meal_type) %></li>
+  <li><%= link_to 'Powrót do listy', meal_types_path %></li>
+</ul>
