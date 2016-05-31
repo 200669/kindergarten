@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'meals/:year/:month/:day' => 'meals#show'
   resources :meal_types
   root 'static_pages#index'
   get 'about' => 'static_pages#about'
