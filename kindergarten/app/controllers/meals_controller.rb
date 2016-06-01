@@ -16,6 +16,7 @@ class MealsController < ApplicationController
     @end_date = @start_date.end_of_day
     
     @stays = Stay.where("start >= ? AND end < ?", @start_date, @end_date)
+    @meal_types = MealType.all
   end
 
   # GET /meals/new

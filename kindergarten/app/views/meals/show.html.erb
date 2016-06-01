@@ -1,5 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<% @stays.each do |stay| %>
-  <%= stay.start %><br />
-<% end %>
+<%=  %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-md-2">Imię</th>
+      <th class="col-md-3">Nazwisko</th>
+      <th class="col-md-3">Dzień</th>
+      
+      <% @meal_types.each do |meal_type| %>
+          <th class="col-md-2"><%= meal_type.name %></th>
+      <% end %>
+      
+      <th class="col-md-1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stays.each do |stay| %>
+      <tr>
+        <td class="col-md-2"><%= stay.child.name %></td>
+        <td class="col-md-3"><%= stay.child.lastname %></td>
+        
+        <td class="col-md-3"><%= stay.start.strftime("%d-%m-%j") %></td>
+        
+        <% @meal_types.each do |meal_type| %>
+          <td class="col-md-2">
+            <input type="checkbox"">
+          </td>
+        <% end %>
+        
+<!--        <td class="col-md-1"><%= link_to glyph(:pencil), edit_stay_path(stay), :class => 'x-icon' %>
+          <%= link_to glyph(:trash), stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
+        </td> -->
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
