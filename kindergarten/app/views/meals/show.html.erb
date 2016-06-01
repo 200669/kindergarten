@@ -5,12 +5,13 @@
 <table class="table">
   <thead>
     <tr>
+      <th class="col-md-1">Dzień</th>
       <th class="col-md-2">Imię</th>
       <th class="col-md-3">Nazwisko</th>
-      <th class="col-md-3">Dzień</th>
+      
       
       <% @meal_types.each do |meal_type| %>
-          <th class="col-md-2"><%= meal_type.name %></th>
+          <th class="col-md-1"><%= meal_type.name %></th>
       <% end %>
       
       <th class="col-md-1"></th>
@@ -20,13 +21,12 @@
   <tbody>
     <% @stays.each do |stay| %>
       <tr>
+        <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td>
         <td class="col-md-2"><%= stay.child.name %></td>
         <td class="col-md-3"><%= stay.child.lastname %></td>
         
-        <td class="col-md-3"><%= stay.start.strftime("%d-%m-%j") %></td>
-        
         <% @meal_types.each do |meal_type| %>
-          <td class="col-md-2">
+          <td class="col-md-1">
             <input type="checkbox"">
           </td>
         <% end %>

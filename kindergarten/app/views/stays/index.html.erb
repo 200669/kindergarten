@@ -7,8 +7,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="col-md-3">Początek</th>
-      <th class="col-md-3">Koniec</th>
+      <th class="col-md-1">Data</th>
+      <th class="col-md-1">Początek</th>
+      <th class="col-md-1">Koniec</th>
       <th class="col-md-2">Imię</th>
       <th class="col-md-3">Nazwisko</th>
       <th class="col-md-1"></th>
@@ -18,8 +19,9 @@
   <tbody>
     <% @stays.each do |stay| %>
       <tr>
-        <td class="col-md-3"><%= stay.start %></td>
-        <td class="col-md-3"><%= stay.end %></td>
+        <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td>
+        <td class="col-md-1"><%= stay.start.strftime("%H:%M:%S") %></td>
+        <td class="col-md-1"><%= stay.end.strftime("%H:%M:%S") %></td>
         <td class="col-md-2"><%= stay.child.name %></td>
         <td class="col-md-3"><%= stay.child.lastname %></td>
         <td class="col-md-1"><%= link_to glyph(:pencil), edit_stay_path(stay), :class => 'x-icon' %>

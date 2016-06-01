@@ -29,6 +29,7 @@
     <table class="table table-bordered">
       <thead>
         <tr>
+          <th>Data</th>
           <th>Początek pobytu</th>
           <th>Koniec pobytu</th>
           <th colspan="2"></th>
@@ -38,8 +39,9 @@
       <tbody>
         <% @child.stays.each do |stay| %>
           <tr>
-            <td><%= stay.start %></td>
-            <td><%= stay.end %></td>
+            <td><%= stay.start.strftime("%d-%m-%Y") %></td>
+            <td><%= stay.start.strftime("%H:%M:%S") %></td>
+            <td><%= stay.end.strftime("%H:%M:%S") %></td>
             <td><%= link_to 'Edytuj', edit_stay_path(stay) %></td>
             <td><%= link_to 'Usuń', stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
           </tr>
