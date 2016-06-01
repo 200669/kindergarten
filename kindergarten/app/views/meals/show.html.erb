@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<%=  %>
+<div class="page-header">
+  <h1>Posiłki, <%= @start_date.strftime("%d-%m-%Y") %></h1>
+</div>
 
 <table class="table">
   <thead>
     <tr>
-      <th class="col-md-1">Dzień</th>
+<!--      <th class="col-md-1">Dzień</th> -->
       <th class="col-md-2">Imię</th>
       <th class="col-md-3">Nazwisko</th>
       
@@ -21,7 +23,7 @@
   <tbody>
     <% @stays.each do |stay| %>
       <tr>
-        <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td>
+<!--        <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td> -->
         <td class="col-md-2"><%= stay.child.name %></td>
         <td class="col-md-3"><%= stay.child.lastname %></td>
         
