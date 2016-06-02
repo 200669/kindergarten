@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531154753) do
+ActiveRecord::Schema.define(version: 20160528171931) do
 
   create_table "children", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -41,11 +41,13 @@ ActiveRecord::Schema.define(version: 20160531154753) do
   end
 
   create_table "meals", force: :cascade do |t|
-    t.integer  "stay_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "stay_id",      limit: 4
+    t.integer  "meal_type_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
+  add_index "meals", ["meal_type_id"], name: "fk_rails_604de882b4", using: :btree
   add_index "meals", ["stay_id"], name: "index_meals_on_stay_id", using: :btree
 
   create_table "stays", force: :cascade do |t|
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160531154753) do
   end
 
   add_foreign_key "children", "groups"
+  add_foreign_key "meals", "meal_types"
   add_foreign_key "meals", "stays"
   add_foreign_key "stays", "children"
 end
