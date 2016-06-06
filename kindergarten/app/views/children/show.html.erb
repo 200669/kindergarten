@@ -41,7 +41,7 @@
           <tr>
             <td><%= stay.start.strftime("%d-%m-%Y") %></td>
             <td><%= stay.start.strftime("%H:%M:%S") %></td>
-            <td><%= stay.end.strftime("%H:%M:%S") %></td>
+            <td><%= stay.end.strftime("%H:%M:%S") if not stay.end.nil? %></td>
             <td><%= link_to 'Edytuj', edit_stay_path(stay) %></td>
             <td><%= link_to 'Usuń', stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' } %></td>
           </tr>

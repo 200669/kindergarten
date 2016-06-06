@@ -1,4 +1,4 @@
 class Meal < ActiveRecord::Base
   belongs_to :stay
-  has_one :meal_type
+  belongs_to :meal_type
 end

@@ -15,7 +15,7 @@
   </div>
   
   <div class="form-group">
-    <%= f.label :group %>
+    <%= f.label :group, "Grupa" %>
     <%= f.select :group_id, options_for_select(Group.all.map{|g|[g.name, g.id]}, @child.group_id), {:prompt => "Wybierz..."}, {class: 'form-control'} %>
   </div>
   

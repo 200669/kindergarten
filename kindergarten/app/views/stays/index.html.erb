@@ -21,10 +21,12 @@
       <tr>
         <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td>
         <td class="col-md-1"><%= stay.start.strftime("%H:%M:%S") %></td>
-        <td class="col-md-1"><%= stay.end.strftime("%H:%M:%S") %></td>
+        <td class="col-md-1"><%= stay.end.nil? ? "" : stay.end.strftime("%H:%M:%S") %></td>
         <td class="col-md-2"><%= stay.child.name %></td>
         <td class="col-md-3"><%= stay.child.lastname %></td>
-        <td class="col-md-1"><%= link_to glyph(:pencil), edit_stay_path(stay), :class => 'x-icon' %>
+        <td class="col-md-1">
+          <%= link_to glyph(:search), stay, :class => 'x-icon' %>
+          <%= link_to glyph(:pencil), edit_stay_path(stay), :class => 'x-icon' %>
           <%= link_to glyph(:trash), stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
         </td>
       </tr> 

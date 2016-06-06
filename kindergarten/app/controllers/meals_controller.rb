@@ -15,7 +15,7 @@ class MealsController < ApplicationController
     @start_date = DateTime.new(@year, @month, @day)
     @end_date = @start_date.end_of_day
     
-    @stays = Stay.where("start >= ? AND end < ?", @start_date, @end_date)
+    @stays = Stay.where("start >= ? AND (end IS NULL OR end < ?)", @start_date, @end_date)
     @meal_types = MealType.all
   end
 
@@ -31,16 +31,14 @@ class MealsController < ApplicationController
   # POST /meals
   # POST /meals.json
   def create
-    @meal = Meal.new(meal_params)
-
-    respond_to do |format|
-      if @meal.save
-        format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
-        format.json { render :show, status: :created, location: @meal }
-      else
-        format.html { render :new }
-        format.json { render json: @meal.errors, status: :unprocessable_entity }
-      end
+    if @meal.nil?
+      @meal = Meal.new(meal_params)
+    end
+    
+    if @meal.save
+      render :json => { status: 'success' }
+    else
+      render :json => { status: 'error' , errors: @meal.errors }
     end
   end
 
@@ -62,10 +60,7 @@ class MealsController < ApplicationController
   # DELETE /meals/1.json
   def destroy
     @meal.destroy
-    respond_to do |format|
-      format.html { redirect_to meals_url, notice: 'Meal was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    render :json => { status: 'success' }
   end
   
   
@@ -77,11 +72,13 @@ class MealsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meal
-      @meal = Meal.find(params[:id])
+      @stay = Stay.find(params[:stay_id])
+      @meal_type = MealType.find(params[:meal_type_id])
+      @meal = get_meal(@stay, @meal_type)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:stay_id)
+      params.require(:meal).permit(:stay_id, :meal_type_id)
     end
 end

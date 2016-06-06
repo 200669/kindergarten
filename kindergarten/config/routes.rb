@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'meals/:year/:month/:day' => 'meals#show'
+  post 'meals' => 'meals#create'
+  delete 'meals/:stay_id/:meal_type_id' => 'meals#destroy'
   resources :meal_types
   root 'static_pages#index'
   get 'about' => 'static_pages#about'

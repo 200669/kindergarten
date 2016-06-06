@@ -13,6 +13,7 @@ class StaysController < ApplicationController
   end
   
   def edit
+    @meal_types = MealType.all
   end
   
   def update

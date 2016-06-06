@@ -28,6 +28,12 @@
         <%= f.datetime_select :end, class: 'form-control' %>
       </div>
       
+      <% @meal_types.each do |meal_type| %>
+        <div class="checkbox">
+          <label><%= check_box_tag 'meal_type_ids[]', meal_type.id, (not get_meal(@stay, meal_type).nil?) %><%= meal_type.name %></label>
+        </div>
+      <% end %>
+      
       <%= f.submit "Wyślij", class: "btn btn-primary" %>
     <% end %>
   </div>

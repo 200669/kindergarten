@@ -1,0 +1,35 @@
+<% provide(:title, "Obecność") %>
+
+<div class="page-header">
+  <h1>Obecność <%= @stay.child.name + ' ' + @stay.child.lastname + ' - ' + @stay.start.strftime("%d-%m-%Y") %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <p>
+      <strong>Początek pobytu:</strong>
+      <%= @stay.start.strftime("%H:%M:%S") %>
+    </p>
+    
+    <p>
+      <strong>Koniec pobytu:</strong>
+      <%= @stay.end.strftime("%H:%M:%S") if not @stay.end.nil? %>
+    </p>
+    
+    <p>
+      <strong>Posiłki:</strong>
+      <ul>
+        <% @stay.meals.each do |meal| %>
+          <li><%= meal.meal_type.name %></li>
+        <% end %>
+      </ul>
+    </p>
+    
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Edycja", edit_stay_path(@stay) %></li>
+  <li><%= link_to "Powrót do dziecka", @stay.child %></li>
+  <li><%= link_to "Powrót do listy", stays_path %></li>
+</ul>
