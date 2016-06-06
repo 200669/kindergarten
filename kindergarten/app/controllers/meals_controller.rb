@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+  before_action :check_logged_in
   before_action :set_meal, only: [:destroy]
 
   # GET /meals
@@ -16,7 +17,7 @@ class MealsController < ApplicationController
     @end_date = @start_date.end_of_day
     
     @stays = Stay.where("start >= ? AND (end IS NULL OR end < ?)", @start_date, @end_date)
-    @meal_types = MealType.all
+    @meal_types = MealType.order(:ordinal)
   end
 
   # GET /meals/new

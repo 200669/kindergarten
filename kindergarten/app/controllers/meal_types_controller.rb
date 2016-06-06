@@ -1,10 +1,11 @@
 class MealTypesController < ApplicationController
+  before_action :check_logged_in
   before_action :set_meal_type, only: [:show, :edit, :update, :destroy]
 
   # GET /meal_types
   # GET /meal_types.json
   def index
-    @meal_types = MealType.all
+    @meal_types = MealType.order(:ordinal)
   end
 
   # GET /meal_types/1
