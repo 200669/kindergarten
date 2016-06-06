@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get 'register', on: :collection
   end
   resources :groups
+  resources :settings
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

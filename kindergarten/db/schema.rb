@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160528171931) do
+ActiveRecord::Schema.define(version: 20160606162756) do
 
   create_table "children", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 20160528171931) do
 
   add_index "meals", ["meal_type_id"], name: "fk_rails_604de882b4", using: :btree
   add_index "meals", ["stay_id"], name: "index_meals_on_stay_id", using: :btree
+
+  create_table "settings", force: :cascade do |t|
+    t.time     "free_stay_begin"
+    t.time     "free_stay_end"
+    t.float    "stay_price_per_hour", limit: 24
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "stays", force: :cascade do |t|
     t.datetime "start"

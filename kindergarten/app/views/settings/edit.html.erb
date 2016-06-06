@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h1>Edycja ustawień</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if @setting.errors.any? %>
+      <div class="alert alert-danger">
+        Formularz zawiera błąd.
+        <ul>
+          <% @setting.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_for(@setting) do |f| %>
+      <div class="form-group">
+        <%= f.label :free_stay_begin, "Początek bezpłatnego pobytu" %>
+        <%= f.time_field :free_stay_begin, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :free_stay_end, "Koniec bezpłatnego pobytu" %>
+        <%= f.time_field :free_stay_end, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :stay_price_per_hour, "Cena płatnego pobytu za godzinę" %>
+        <%= f.number_field :stay_price_per_hour, class: 'form-control', :step => 0.01 %>
+      </div>
+      
+      <%= f.submit "Wyślij", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Powrót do ustawień", settings_path %></li>
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>

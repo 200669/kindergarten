@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1>Ustawienia</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>Początek bezpłatnego pobytu:</strong>
+      <%= @setting.free_stay_begin.gmtime.strftime('%R:%S') %>
+    </p>
+    <p>
+      <strong>Koniec bezpłatnego pobytu:</strong>
+      <%= @setting.free_stay_end.gmtime.strftime('%R:%S') %>
+    </p>
+    <p>
+      <strong>Cena płatnego pobytu za godzinę:</strong>
+      <%= '%.2f zł' % @setting.stay_price_per_hour %>
+    </p>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Edytuj ustawienia", edit_setting_path(@setting) %></li>
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>
