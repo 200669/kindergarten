@@ -1,16 +1,25 @@
+<div class="page-header">
+  <h1>Wybierz dzień</h1>
+</div>
 
-<%=
-  form_for(@child) do |f| %>
-  
-  <div class="form-group">
-    <%= f.label :group %>
-    <%= f.select :group_id, options_for_select(Group.all.map{|g|[g.name, g.id]}, @child.group_id), {:prompt => "Wybierz..."}, {class: 'form-control'} %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.label :birthdate, "Data urodzenia" %>
-    <%= f.date_select :birthdate, start_year: Date.today.year - 10, end_year: Date.today.year, class: 'form-control' %>
-  </div>
-  
-  <%= f.submit "Wyślij", class: "btn btn-primary" %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr class="row">
+      <th class="col-md-12">Data</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @days.each do |day| %>
+      <tr class="row">
+        <td class="col-md-12"><%= link_to day.strftime("%d-%m-%Y"), day_meals_path(day.year, day.month, day.day) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<ul class="pager">
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>

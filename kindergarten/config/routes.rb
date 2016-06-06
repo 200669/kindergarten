@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'meals/:year/:month/:day' => 'meals#show', :as => :meals
+  get 'meals/' => 'meals#index', :as => :meals
+  get 'meals/:year/:month/:day' => 'meals#show', :as => :day_meals
   post 'meals' => 'meals#create'
   delete 'meals/:stay_id/:meal_type_id' => 'meals#destroy'
   resources :meal_types

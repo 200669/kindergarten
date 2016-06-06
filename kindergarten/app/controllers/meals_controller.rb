@@ -5,6 +5,11 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
+    @days = []
+    Stay.order(:start).each do |stay|
+      new_day = stay.start.beginning_of_day
+      @days.push(new_day) if not @days.include?(new_day)
+    end
   end
 
   # GET /meals/1

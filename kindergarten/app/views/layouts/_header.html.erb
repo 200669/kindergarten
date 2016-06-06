@@ -22,7 +22,8 @@
                 <ul class="sub-menu collapse" id="posilki">
                 <li><%= link_to "Dodaj nowy rodzaj", new_meal_type_path %></li>
                 <li><%= link_to "Rodzaje posiłków", meal_types_path %></li>
-                <li><%= link_to "Dzisiejsze posiłki", meals_path(DateTime.now.year, DateTime.now.month, DateTime.now.day) %></li>
+                <li><%= link_to "Dodaj posiłki", meals_path %></li>
+                <li><%= link_to "Dzisiejsze posiłki", day_meals_path(DateTime.now.year, DateTime.now.month, DateTime.now.day) %></li>
               </ul>
           
             

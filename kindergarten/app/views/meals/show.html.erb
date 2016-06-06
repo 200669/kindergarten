@@ -39,6 +39,11 @@
   </tbody>
 </table>
 
+<ul class="pager">
+  <li><%= link_to "Powrót do listy", meals_path %></li>
+  <li><%= link_to "Powrót do strony głównej", root_path %></li>
+</ul>
+
 <script>
   $('input[type="checkbox"]').change(function() {
     stay_id = $(this).data("stay");
