@@ -1,0 +1,18 @@
+<%= form_for(@report) do |f| %>
+  <div class="form-group">
+    <%= f.label :child, "Dziecko" %>
+    <%= f.select :child_id, options_for_select(Child.all.map{|c| [c.name + " " + c.lastname, c.id]}, @report.child_id), {:prompt => "Wybierz..."}, {class: 'form-control'} %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :period_begin, "Początek okresu" %>
+    <%= f.date_field :period_begin, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :period_end, "Koniec okresu" %>
+    <%= f.date_field :period_end, class: 'form-control' %>
+  </div>
+  
+  <%= f.submit "Wyślij", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,95 @@
+<div class="page-header">
+  <h1>Szczegóły raportu <%= @report.child.name + " " + @report.child.lastname %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <p>
+      <strong>Początek okresu:</strong>
+      <%= @report.period_begin.strftime("%d-%m-%Y") %>
+    </p>
+    <p>
+      <strong>Koniec okresu:</strong>
+      <%= @report.period_end.strftime("%d-%m-%Y") %>
+    </p>
+  </div>
+  
+  <div class="col-md-3">
+    <p>
+      <strong>Liczba godzin:</strong>
+      <ul>
+        <li>bezpłatnych: <%= @hours_free %></li>
+        <li>płatnych: <%= @hours_paid %></li>
+      </ul>
+    </p>
+    <p>
+      <strong>Należność za godziny:</strong>
+      <%= '%.2f zł' % @hours_fee %>
+    </p>
+  </div>
+    
+  <div class="col-md-3">
+    <p>
+      <strong>Posiłki:</strong>
+      <ul>
+        <% MealType.order(:ordinal).each do |meal_type| %>
+          <li><%= meal_type.name %>: <%= @meals[meal_type.id] %></li>
+        <% end %>
+      </ul>
+    </p>
+    <p>
+      <strong>Należność za posiłki:</strong>
+      <%= '%.2f zł' % @meals_fee %>
+    </p>
+  </div>
+    
+  <div class="col-md-3">
+    <p>
+      <strong>Suma należności:</strong>
+      <%= '%.2f zł' % (@hours_fee + @meals_fee) %>
+    </p>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-md-12">
+    <h2>Lista obecności</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th class="col-md-1">Data</th>
+          <th class="col-md-1">Początek pobytu</th>
+          <th class="col-md-1">Koniec pobytu</th>
+          <th class="col-md-1">Posiłki</th>
+          <th class="col-md-1"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @report.child.stays.each do |stay| %>
+          <tr>
+            <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td>
+            <td class="col-md-1"><%= stay.start.strftime("%H:%M:%S") %></td>
+            <td class="col-md-1"><%= stay.end.strftime("%H:%M:%S") if not stay.end.nil? %></td>
+            <td class="col-md-1">
+              <ul>
+                <% stay.meals.each do |meal| %>
+                  <li><%= meal.meal_type.name %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td class="col-md-1">
+              <%= link_to glyph(:pencil), edit_stay_path(stay), :class => 'x-icon-red' %>
+              <%= link_to glyph(:trash), stay, method: :delete, data: { confirm: 'Czy jesteś pewny? Tej akcji nie da się cofnąć.' }, :class => 'x-icon' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Powrót do raportu", @report %></li>
+  <li><%= link_to "Powrót do listy", reports_path %></li>
+</ul>

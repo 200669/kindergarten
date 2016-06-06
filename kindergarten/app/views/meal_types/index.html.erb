@@ -17,7 +17,7 @@
       <tr class="row">
         <td class="col-md-1"><%= meal_type.ordinal %></td>
         <td class="col-md-5"><%= meal_type.name %></td>
-        <td class="col-md-4"><%= meal_type.price %></td>
+        <td class="col-md-4"><%= '%.2f zł' % meal_type.price %></td>
         <td class="col-md-2">
           <%= link_to glyph(:search), meal_type, :class => 'x-icon' %>
           <%= link_to glyph(:pencil), edit_meal_type_path(meal_type), :class => 'x-icon' %>

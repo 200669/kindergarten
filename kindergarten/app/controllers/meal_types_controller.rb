@@ -29,7 +29,7 @@ class MealTypesController < ApplicationController
 
     respond_to do |format|
       if @meal_type.save
-        format.html { redirect_to @meal_type, notice: 'Meal type was successfully created.' }
+        format.html { redirect_to @meal_type, flash: { info: 'Rodzaj posiłku pomyślnie dodany' } }
         format.json { render :show, status: :created, location: @meal_type }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class MealTypesController < ApplicationController
   def update
     respond_to do |format|
       if @meal_type.update(meal_type_params)
-        format.html { redirect_to @meal_type, notice: 'Meal type was successfully updated.' }
+        format.html { redirect_to @meal_type, flash: { info: 'Rodzaj posiłku zaktualizowany' } }
         format.json { render :show, status: :ok, location: @meal_type }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class MealTypesController < ApplicationController
   def destroy
     @meal_type.destroy
     respond_to do |format|
-      format.html { redirect_to meal_types_url, notice: 'Meal type was successfully destroyed.' }
+      format.html { redirect_to meal_types_url, flash: { info: 'Rodzaj posiłku usunięty z bazy' } }
       format.json { head :no_content }
     end
   end

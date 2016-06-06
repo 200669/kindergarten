@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :price, "Cena" %><br>
-    <%= f.text_field :price, class: 'form-control' %>
+    <%= f.number_field :price, :step => 0.01, class: 'form-control' %>
   </div>
  <%= f.submit "Wyślij", class: "btn btn-primary" %>
 <% end %>

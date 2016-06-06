@@ -1,0 +1,52 @@
+<div class="page-header">
+  <h1>Raport <%= @report.child.name + " " + @report.child.lastname %></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>Początek okresu:</strong>
+      <%= @report.period_begin.strftime("%d-%m-%Y") %>
+    </p>
+    <p>
+      <strong>Koniec okresu:</strong>
+      <%= @report.period_end.strftime("%d-%m-%Y") %>
+    </p>
+    <hr />
+    <p>
+      <strong>Liczba godzin:</strong>
+      <ul>
+        <li>bezpłatnych: <%= @hours_free %></li>
+        <li>płatnych: <%= @hours_paid %></li>
+      </ul>
+    </p>
+    <p>
+      <strong>Należność za godziny:</strong>
+      <%= '%.2f zł' % @hours_fee %>
+    </p>
+    <hr />
+    <p>
+      <strong>Posiłki:</strong>
+      <ul>
+        <% MealType.order(:ordinal).each do |meal_type| %>
+          <li><%= meal_type.name %>: <%= @meals[meal_type.id] %></li>
+        <% end %>
+      </ul>
+    </p>
+    <p>
+      <strong>Należność za posiłki:</strong>
+      <%= '%.2f zł' % @meals_fee %>
+    </p>
+    <hr />
+    <p>
+      <strong>Suma należności:</strong>
+      <%= '%.2f zł' % (@hours_fee + @meals_fee) %>
+    </p>
+  </div>
+</div>
+
+<ul class="pager">
+  <li><%= link_to "Edycja", edit_report_path(@report) %></li>
+  <li><%= link_to "Szczegóły", details_report_path(@report) %></li>
+  <li><%= link_to "Powrót do listy", reports_path %></li>
+</ul>

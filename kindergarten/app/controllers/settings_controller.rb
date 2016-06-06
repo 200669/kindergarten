@@ -3,9 +3,6 @@ class SettingsController < ApplicationController
   before_action :set_setting, only: [:index, :edit, :update]
   
   def index
-    if @setting.nil?
-      @setting = Setting.create!(default_settings)
-    end
   end
   
   def edit
@@ -22,14 +19,10 @@ class SettingsController < ApplicationController
   
   private
     def set_setting
-      @setting = Setting.first
+      @setting = get_settings
     end
 
     def setting_params
       params.require(:setting).permit(:free_stay_begin, :free_stay_end, :stay_price_per_hour)
-    end
-    
-    def default_settings
-      { free_stay_begin: Time.at(8 * 3600), free_stay_end: Time.at(13 * 3600), stay_price_per_hour: 1 }
     end
 end

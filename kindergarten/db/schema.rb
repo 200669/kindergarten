@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606162756) do
+ActiveRecord::Schema.define(version: 20160606183455) do
 
   create_table "children", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20160606162756) do
   add_index "meals", ["meal_type_id"], name: "fk_rails_604de882b4", using: :btree
   add_index "meals", ["stay_id"], name: "index_meals_on_stay_id", using: :btree
 
+  create_table "reports", force: :cascade do |t|
+    t.integer  "child_id",     limit: 4
+    t.integer  "user_id",      limit: 4
+    t.datetime "period_begin"
+    t.datetime "period_end"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "reports", ["child_id"], name: "index_reports_on_child_id", using: :btree
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id", using: :btree
+
   create_table "settings", force: :cascade do |t|
     t.time     "free_stay_begin"
     t.time     "free_stay_end"
@@ -80,5 +92,7 @@ ActiveRecord::Schema.define(version: 20160606162756) do
   add_foreign_key "children", "groups"
   add_foreign_key "meals", "meal_types"
   add_foreign_key "meals", "stays"
+  add_foreign_key "reports", "children"
+  add_foreign_key "reports", "users"
   add_foreign_key "stays", "children"
 end
