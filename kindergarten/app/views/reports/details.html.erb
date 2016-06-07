@@ -66,7 +66,7 @@
       </thead>
     
       <tbody>
-        <% @report.child.stays.each do |stay| %>
+        <% @report.child.stays.where("start >= ? AND end < ?", @report.period_begin.beginning_of_day, @report.period_end.end_of_day).each do |stay| %>
           <tr>
             <td class="col-md-1"><%= stay.start.strftime("%d-%m-%Y") %></td>
             <td class="col-md-1"><%= stay.start.strftime("%H:%M:%S") %></td>

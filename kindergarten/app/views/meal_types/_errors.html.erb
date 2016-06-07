@@ -1,0 +1,10 @@
+<% if @meal_type.errors.any? %>
+  <div class="alert alert-danger">
+    Formularz zawiera błąd.
+    <ul>
+      <% @meal_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

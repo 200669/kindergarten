@@ -16,17 +16,6 @@
 
           <% end %>
           
-            <li data-toggle="collapse" data-target="#posilki" class="collapsed">
-                  <a href="#"> Posiłki <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
-                </li>  
-                <ul class="sub-menu collapse" id="posilki">
-                <li><%= link_to "Dodaj nowy rodzaj", new_meal_type_path %></li>
-                <li><%= link_to "Rodzaje posiłków", meal_types_path %></li>
-                <li><%= link_to "Dodaj posiłki", meals_path %></li>
-                <li><%= link_to "Dzisiejsze posiłki", day_meals_path(DateTime.now.year, DateTime.now.month, DateTime.now.day) %></li>
-              </ul>
-          
-            
               <li data-toggle="collapse" data-target="#dzieci" class="collapsed">
                   <a href="#"> Dzieci <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
                 </li>  
@@ -45,6 +34,16 @@
               <li><%= link_to "Lista obecności", stays_path %></li>
               <li><%= link_to "Ustawienia", settings_path %></li>
             </ul>
+            
+            <li data-toggle="collapse" data-target="#posilki" class="collapsed">
+                  <a href="#"> Posiłki <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="posilki">
+                <li><%= link_to "Dodaj nowy rodzaj", new_meal_type_path %></li>
+                <li><%= link_to "Rodzaje posiłków", meal_types_path %></li>
+                <li><%= link_to "Dodaj posiłki", meals_path %></li>
+                <li><%= link_to "Dzisiejsze posiłki", day_meals_path(DateTime.now.year, DateTime.now.month, DateTime.now.day) %></li>
+              </ul>
             
             <li data-toggle="collapse" data-target="#raporty" class="collapsed">
                   <a href="#"> Raporty <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><span class="arrow"></span></a>
