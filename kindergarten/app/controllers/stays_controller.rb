@@ -3,7 +3,7 @@ class StaysController < ApplicationController
   before_action :set_stay, only: [:show, :edit, :update, :destroy]
   
   def index
-    @stays = Stay.all
+    @stays = Stay.order(start: :desc)
   end
   
   def show

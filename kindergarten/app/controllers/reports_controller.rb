@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :details, :edit, :update, :destroy]
   
   def index
-    @reports = Report.all
+    @reports = Report.order(:period_begin)
   end
   
   def show
@@ -67,7 +67,7 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
     @report.user = current_user
     if @report.save
-      flash[:info] = "Grupa dodana pomyślnie"
+      flash[:info] = "Raport dodany pomyślnie"
       redirect_to @report
     else
       render :new
@@ -76,7 +76,7 @@ class ReportsController < ApplicationController
   
   def update
     if @report.update(group_params)
-      flash[:info] = "Dane grupy zapisane"
+      flash[:info] = "Dane raportu zapisane"
       redirect_to @report
     else
       render :edit
@@ -85,7 +85,7 @@ class ReportsController < ApplicationController
   
   def destroy
     @report.destroy
-    flash[:info] = "Grupa usunięta"
+    flash[:info] = "Raport usunięty"
     redirect_to reports_url
   end
   

@@ -5,7 +5,7 @@ class ChildrenController < ApplicationController
   # GET /children
   # GET /children.json
   def index
-    @children = Child.all
+    @children = Child.order(:barcode)
   end
 
   # GET /children/1
